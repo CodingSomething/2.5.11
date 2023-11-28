@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Game {
     Player player1;
-    Playe player2;
+    Player player2;
     int numPieces;
     int changeVal;
     boolean player1Turn;
@@ -18,7 +18,7 @@ public class Game {
         name = sc.nextLine();
         System.out.println("Welcome to the game " + name + "!\n");
         player2 = new Player(name);
-        numPieces = (10 + (Math.random() * 40 + 1));
+        numPieces = (10 + (int)(Math.random() * 40) + 1);
         if ((Math.random() * 2) == 1) {
             player1Turn = true;
         } else {
@@ -26,31 +26,39 @@ public class Game {
         }   
     }
 
-    public void play() {
+    public String play() {
 
         while (numPieces > 1) {
+            System.out.println("There are currently " + numPieces + " left in the pile.");
             if (player1Turn) {
                 System.out.println(player1.getName() + ", please enter the number of pieces you want to take:");
                 changeVal = sc.nextInt();
-                if (changeVal <= (numPieces/2)){
+                if (changeVal <= (numPieces/2) && changeVal > 0){
                     numPieces -= changeVal;
-                player1Turn = false;
-                }
+                    player1Turn = false;
+                } else {
+                    System.out.println("Invalid response, please try again.");
+                } 
             }
             else{
                 System.out.println(player2.getName() + ", please enter the number of pieces you want to take:");
                 changeVal = sc.nextInt();
-                if (changeVal <= (numPieces/2)){
+                if (changeVal <= (numPieces/2) && changeVal > 0){
                     numPieces -= changeVal;
-                player1Turn = true;
-            }
-        }
+                    player1Turn = true;
+                } else {
+                    System.out.println("Invalid response, please try again.");
+                }   
+         }
     }
-    if (player1True){
-        System.out.println("Player 2 has won!");
+    if (player1Turn){
+        System.out.println(player2.getName() + " has won!");
     }
     else{
-        System.out.println("Player 1 has won!");
+        System.out.println(player1.getName() + " has won!");
     }
+    System.out.println("Please enter \"yes\" if you want to play again");
+    name = sc.nextLine();
+    return name;
     }
 }
