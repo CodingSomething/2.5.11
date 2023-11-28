@@ -7,8 +7,5 @@ public class Player {
     public String getName(){
         return name;
     }
-    public boolean getWinVal(){
-        return win;
-    }
 
 }
