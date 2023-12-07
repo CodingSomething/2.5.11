@@ -129,7 +129,7 @@ public class Game {
                         changeVal = sc.nextInt();
                         if (changeVal <= (numPieces/2) && changeVal > 0){
                             numPieces -= changeVal;
-                            player1Turn = false;
+                            player1Turn = true;
                         } else {
                             System.out.println("Invalid response, please try again.");
                         } 
